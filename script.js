@@ -77,3 +77,27 @@ window.onload = () => {
   initStars();
   document.body.style.opacity = '1';
 };
+/* ── BACKGROUND MUSIC ── */
+// Create an audio element (Use a soft, instrumental or his favorite song)
+const bgMusic = new Audio('https://www.bensound.com/bensound-music/bensound-love.mp3'); 
+bgMusic.loop = true;
+
+const toggleMusic = () => {
+  if (bgMusic.paused) {
+    bgMusic.play();
+    document.getElementById('music-icon').textContent = '🎵';
+  } else {
+    bgMusic.pause();
+    document.getElementById('music-icon').textContent = '🔇';
+  }
+};
+
+// Add a floating music button to every page via JS so you don't edit every HTML
+window.addEventListener('DOMContentLoaded', () => {
+  const musicBtn = document.createElement('div');
+  musicBtn.id = 'music-toggle';
+  musicBtn.innerHTML = '<span id="music-icon">🔇</span>';
+  musicBtn.style = "position:fixed; bottom:20px; left:20px; z-index:999; cursor:pointer; background:var(--glass); padding:10px; border-radius:50%; border:1px solid var(--glass-border);";
+  musicBtn.onclick = toggleMusic;
+  document.body.appendChild(musicBtn);
+});

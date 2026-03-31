@@ -14,6 +14,7 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
@@ -25,6 +26,7 @@
             max-width: 600px;
             padding: 60px 40px;
             animation: finalReveal 2.5s ease-out;
+            margin-bottom: 30px;
         }
 
         @keyframes finalReveal {
@@ -47,6 +49,36 @@
             text-shadow: 0 0 15px rgba(255, 143, 177, 0.5);
         }
 
+        /* ── HOME NAVIGATION ── */
+        .home-nav {
+            opacity: 0;
+            animation: fadeIn 2s ease-in forwards;
+            animation-delay: 3s; /* Appears after the main message */
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 0.7; }
+        }
+
+        .btn-home {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--pale);
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-home:hover {
+            background: var(--glass);
+            color: var(--white);
+            border-color: var(--pink);
+            opacity: 1;
+        }
+
         /* ── HIDDEN EASTER EGG ── */
         .secret-star {
             position: fixed;
@@ -61,9 +93,7 @@
             z-index: 100;
         }
 
-        .secret-star:hover {
-            background: rgba(255, 143, 177, 0.2);
-        }
+        .secret-star:hover { background: rgba(255, 143, 177, 0.2); }
 
         .egg-modal {
             position: fixed;
@@ -103,6 +133,12 @@
         </p>
         
         <h1 class="thank-you">Thank you for being my Cookie ✨💜</h1>
+    </div>
+
+    <div class="home-nav">
+        <a href="javascript:void(0)" class="btn-home" onclick="navigateTo('index.html')">
+            Restart the Magic 🏠
+        </a>
     </div>
 
     <div class="secret-star" onclick="toggleEgg()"></div>
