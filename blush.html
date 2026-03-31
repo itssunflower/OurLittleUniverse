@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blush Mode 😌</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Dancing+Script:wght@700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            transition: background 1s ease; /* For the glow change */
+        }
+
+        .blush-container {
+            max-width: 600px;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        .blush-card {
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .blush-card.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        #blush-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--pale);
+            line-height: 1.6;
+        }
+
+        .special-chat {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--pink);
+            font-family: 'Nunito', sans-serif;
+            opacity: 0.8;
+        }
+
+        /* Dynamic background glow */
+        .pink-glow {
+            box-shadow: inset 0 0 100px rgba(255, 143, 177, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blush-container">
+        <h2 class="section-title">Do you remember this? 😌</h2>
+        <p style="color: var(--pale); opacity: 0.7; margin-bottom: 30px;">click below... if you're brave enough 🌸</p>
+        
+        <button class="btn-magical" id="blush-btn" onclick="triggerBlush()">
+            Make me blush 🌸
+        </button>
+
+        <div class="glass-card blush-card" id="card">
+            <div>
+                <p id="blush-text">Click the button to see a memory...</p>
+                <div id="extra-moment" class="special-chat"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-footer" style="position: fixed; bottom: 40px;">
+        <a href="javascript:void(0)" class="btn-magical" style="opacity: 0.6;" onclick="navigateTo('final.html')">
+            The final word... 💜
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const lines = [
+            "Khuda bhi jab tumhe mere paas dekhta hoga… toh muskurata hoga 💜",
+            "Main toh tere rang mein rang chuka hoon… ab khud ka rang yaad hi nahi 🌸",
+            "Mujhe neend aati nahi hai akele… teri baatein hi lullaby ban gayi hain 🌙",
+            "Tujhe dekh ke lagta hai, yeh dil kisi ka tha hi nahi… bas tera tha ❤",
+            "Teri ek muskurahat pe main sab kuch luta deta hoon… 💜",
+            "Tu mere paas ho ya na ho… tu mere andar hamesha hoti hai 💜",
+            "“Aakar gaal laal kar du tumhara”\n“tum toh baato se bhi laal kar deti hoo gaal mere”"
+        ];
+
+        let index = 0;
+
+        function triggerBlush() {
+            const card = document.getElementById('card');
+            const text = document.getElementById('blush-text');
+            const btn = document.getElementById('blush-btn');
+
+            // 1. Reset card for animation
+            card.classList.remove('active');
+            
+            setTimeout(() => {
+                // 2. Set new text
+                text.innerText = lines[index % lines.length];
+                
+                // 3. Increment index
+                index++;
+
+                // 4. Show card and burst hearts
+                card.classList.add('active');
+                document.body.classList.add('pink-glow');
+                
+                if (typeof createHeartBurst === 'function') {
+                    createHeartBurst(); 
+                }
+
+                // Change button text after first click
+                btn.innerText = "One more? 🌸";
+            }, 300);
+        }
+    </script>
+</body>
+</html>

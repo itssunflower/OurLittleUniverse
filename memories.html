@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Things I Carry in My Heart... 💜</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lora:ital,wght@0,400;1,400&family=Dancing+Script:wght@700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        section {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, var(--pale), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        /* ── CHAT BUBBLES ── */
+        .chat-container { display: flex; flex-direction: column; gap: 15px; min-height: 250px; }
+
+        .bubble {
+            max-width: 85%;
+            padding: 15px 20px;
+            border-radius: 20px;
+            line-height: 1.6;
+            font-family: 'Lora', serif;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .bubble-left {
+            align-self: flex-start;
+            background: rgba(106, 76, 147, 0.4);
+            border-bottom-left-radius: 4px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .bubble-right {
+            align-self: flex-end;
+            background: rgba(255, 143, 177, 0.3);
+            border-bottom-right-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-family: 'Courier New', monospace;
+        }
+
+        .typing-dots {
+            font-style: italic;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* ── POLAROIDS ── */
+        .polaroid-row {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 10px 10px 30px 10px;
+            width: 180px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: rotate(var(--r));
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .polaroid:hover { transform: rotate(0deg) scale(1.1); z-index: 5; }
+
+        .polaroid-img {
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .polaroid span {
+            display: block;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            color: var(--deep);
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* ── TYPEWRITER ── */
+        .typewriter-box {
+            text-align: center;
+            padding: 40px;
+            min-height: 150px;
+        }
+
+        #tw-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--pale);
+            line-height: 1.5;
+        }
+
+        .nav-footer { text-align: center; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <section>
+        <h2 class="section-title">A Little Piece of Us... 🌙</h2>
+
+        <div class="chat-container">
+            <div id="chat-1" class="bubble bubble-left glass-card" style="opacity: 0; transform: translateY(10px);">
+                <span class="typing-dots">He is typing...</span>
+            </div>
+
+            <div id="chat-2" class="bubble bubble-right glass-card" style="opacity: 0; transform: translateY(10px);">
+                <span class="typing-dots">He is typing...</span>
+            </div>
+        </div>
+
+        <div class="polaroid-row">
+            <div class="polaroid" style="--r: -3deg">
+                <div class="polaroid-img">🌸</div>
+                <span>Main rang sharbaton ka...</span>
+            </div>
+            <div class="polaroid" style="--r: 2deg">
+                <div class="polaroid-img">🎂</div>
+                <span>27 Feb 2001 💜<br>The world got brighter</span>
+            </div>
+            <div class="polaroid" style="--r: -1deg">
+                <div class="polaroid-img">🌙</div>
+                <span>Tera mera hai pyaar amar...</span>
+            </div>
+        </div>
+
+        <div class="glass-card typewriter-box">
+            <p id="tw-text"></p>
+        </div>
+
+        <div class="nav-footer">
+            <a href="javascript:void(0)" class="btn-magical" onclick="navigateTo('dreams.html')">
+                Look into our future 🌟
+            </a>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // ── CHAT TYPING LOGIC ──
+        const messages = [
+            { 
+                id: 'chat-1', 
+                content: "Woh zindagi…. hai hi nahi<br>Jo main tere bina jee liyaaaaa<br>Dil mein ho tum….💜❤<br>Aankhon mein tum….😇",
+                delay: 1000 
+            },
+            { 
+                id: 'chat-2', 
+                content: '<span style="color:#a8ff78;">while</span>(true):<br>&nbsp;&nbsp;&nbsp;print(<span style="color:#ff8fb1;">"Pookieeee is the best 💜"</span>)',
+                delay: 3500 
+            }
+        ];
+
+        const triggerChats = () => {
+            messages.forEach((msg) => {
+                const el = document.getElementById(msg.id);
+                
+                setTimeout(() => {
+                    el.style.opacity = "1";
+                    el.style.transform = "translateY(0)";
+                    
+                    // Artificial typing delay
+                    setTimeout(() => {
+                        el.innerHTML = msg.content;
+                        // Trigger a small heart burst when message appears
+                        if(typeof createHeartBurst === 'function') createHeartBurst();
+                    }, 1500);
+
+                }, msg.delay);
+            });
+        };
+
+        // ── TYPEWRITER LOGIC ──
+        const typeText = "Tum se hi din hota hai...\nsurmayi shaam aati hai...\nTum se hi, tum se hi… ❤";
+        let charIndex = 0;
+        const typeSpeed = 70;
+
+        function runTypewriter() {
+            if (charIndex < typeText.length) {
+                const char = typeText.charAt(charIndex);
+                document.getElementById("tw-text").innerHTML += char === "\n" ? "<br>" : char;
+                charIndex++;
+                setTimeout(runTypewriter, typeSpeed);
+            }
+        }
+
+        // Initialize animations on load
+        window.addEventListener('load', () => {
+            triggerChats();
+            // Start typewriter after chats are mostly done
+            setTimeout(runTypewriter, 6000);
+        });
+    </script>
+</body>
+</html>
